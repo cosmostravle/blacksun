@@ -2,16 +2,20 @@ package com.xiehui.controller;
 
 import com.xiehui.model.SwaggerModel;
 import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api("学生接口")
+//@Api("学生接口")
+@Tag(name = "学生接口")
 @RestController
-public class SwaggerController {
+public class SwaggerControllerHigh {
 
 
-    @ApiOperation("查询单个SwaggerModel")
+//    @ApiOperation("查询单个SwaggerModel")
+    @Operation(summary = "查询单个SwaggerModel")
     @GetMapping("/id")
     public SwaggerModel select(@ApiParam("SwaggerModel对象") SwaggerModel swaggerModel){
         SwaggerModel student = new SwaggerModel(1L, "小米", 1);
@@ -19,7 +23,8 @@ public class SwaggerController {
         System.out.println(student);
         return student;
     }
-    @ApiOperation("查询学SwaggerModel")
+//    @ApiOperation("查询学SwaggerModel")
+    @Operation(summary = "查询学SwaggerModel")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "查询成功", response = SwaggerModel.class),
             @ApiResponse(code = 400, message = "请求参数有误"),
