@@ -17,7 +17,9 @@
     <!--    依赖版本-->
     <properties>
         <java.version>8</java.version>
+        <!--低版本springboot只用引入swagger2 -->
         <swagger2.version>3.0.0</swagger2.version>
+        <!-- 高版本springboot需要引入swagger-annotations和springdoc-->
         <swagger-annotations.version>1.5.21</swagger-annotations.version>
         <springdoc.version>2.0.2</springdoc.version>
     </properties>
