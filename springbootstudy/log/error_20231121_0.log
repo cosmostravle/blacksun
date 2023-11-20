@@ -1,0 +1,37 @@
+2023-11-21 00:18:47.772 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mStarting logbackslf4j1 using Java 17.0.9 with PID 3282 (started by xiehui in /Users/xiehui/Dev/Idea Project/blacksun/springbootstudy)
+[0;39m2023-11-21 00:18:47.772 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mRunning with Spring Boot v3.1.5, Spring v6.0.13
+[0;39m2023-11-21 00:18:47.773 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mNo active profile set, falling back to 1 default profile: "default"
+[0;39m2023-11-21 00:18:49.772 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mStarted logbackslf4j1 in 2.288 seconds (process running for 3.778)
+[0;39m2023-11-21 00:18:50.527 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mDebug message
+[0;39m2023-11-21 00:18:50.527 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mInfo message
+[0;39m2023-11-21 00:18:50.528 [31mWARN [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mWarning message
+[0;39m2023-11-21 00:18:50.528 [1;31mERROR[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mError message
+[0;39m2023-11-21 00:18:50.528 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mDebug  anno message
+[0;39m2023-11-21 00:18:50.528 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mInfo anno message
+[0;39m2023-11-21 00:18:50.528 [31mWARN [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mWarning anno message
+[0;39m2023-11-21 00:18:50.528 [1;31mERROR[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mError anno message
+[0;39m2023-11-21 00:19:13.081 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mStarting logbackslf4j1 using Java 17.0.9 with PID 3294 (started by xiehui in /Users/xiehui/Dev/Idea Project/blacksun/springbootstudy)
+[0;39m2023-11-21 00:19:13.082 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mRunning with Spring Boot v3.1.5, Spring v6.0.13
+[0;39m2023-11-21 00:19:13.084 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mNo active profile set, falling back to 1 default profile: "default"
+[0;39m2023-11-21 00:19:15.117 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mStarted logbackslf4j1 in 2.34 seconds (process running for 3.849)
+[0;39m2023-11-21 00:19:15.943 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mDebug message
+[0;39m2023-11-21 00:19:15.943 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mInfo message
+[0;39m2023-11-21 00:19:15.943 [31mWARN [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mWarning message
+[0;39m2023-11-21 00:19:15.944 [1;31mERROR[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mError message
+[0;39m2023-11-21 00:19:15.944 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:logInfo:14][0;39m - [36mDebug  anno message
+[0;39m2023-11-21 00:19:15.944 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:logInfo:15][0;39m - [36mInfo anno message
+[0;39m2023-11-21 00:19:15.944 [31mWARN [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:logInfo:16][0;39m - [36mWarning anno message
+[0;39m2023-11-21 00:19:15.944 [1;31mERROR[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mError anno message
+[0;39m2023-11-21 00:19:26.485 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mStarting logbackslf4j1 using Java 17.0.9 with PID 3305 (started by xiehui in /Users/xiehui/Dev/Idea Project/blacksun/springbootstudy)
+[0;39m2023-11-21 00:19:26.486 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mRunning with Spring Boot v3.1.5, Spring v6.0.13
+[0;39m2023-11-21 00:19:26.488 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mNo active profile set, falling back to 1 default profile: "default"
+[0;39m2023-11-21 00:19:28.413 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbak_slf4j.logbackslf4j1>> Method:?:?][0;39m - [36mStarted logbackslf4j1 in 2.21 seconds (process running for 3.776)
+[0;39m2023-11-21 00:19:29.209 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mDebug message
+[0;39m2023-11-21 00:19:29.210 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mInfo message
+[0;39m2023-11-21 00:19:29.210 [31mWARN [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:logInfo:17][0;39m - [36mWarning message
+[0;39m2023-11-21 00:19:29.210 [1;31mERROR[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4j>> Method:?:?][0;39m - [36mError message
+[0;39m2023-11-21 00:19:29.210 [39mDEBUG[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mDebug  anno message
+[0;39m2023-11-21 00:19:29.210 [34mINFO [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mInfo anno message
+[0;39m2023-11-21 00:19:29.210 [31mWARN [0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mWarning anno message
+[0;39m2023-11-21 00:19:29.210 [1;31mERROR[0;39m |[33mmain[0;39m [34m[com.xiehui.logbackslf4j.Logbackslf4janno>> Method:?:?][0;39m - [36mError anno message
+[0;39m

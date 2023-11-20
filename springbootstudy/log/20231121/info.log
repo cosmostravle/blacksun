@@ -1,0 +1,3 @@
+2023-11-21 00:19:25.867 [34mINFO [0;39m |[33mmain[0;39m [34m[org.springframework.test.context.support.AnnotationConfigContextLoaderUtils>> Method:detectDefaultConfigurationClasses:83][0;39m - [36mCould not detect default configuration classes for test class [com.xiehui.logbak_slf4j.logbackslf4j1]: logbackslf4j1 does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[0;39m2023-11-21 00:19:25.987 [34mINFO [0;39m |[33mmain[0;39m [34m[org.springframework.boot.test.context.SpringBootTestContextBootstrapper>> Method:getOrFindConfigurationClasses:248][0;39m - [36mFound @SpringBootConfiguration com.xiehui.SpringbootstudyApplication for test class com.xiehui.logbak_slf4j.logbackslf4j1
+[0;39m
