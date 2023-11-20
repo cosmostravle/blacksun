@@ -1,0 +1,203 @@
+<!-- logback.xml -->
+<!--
+在工程resources目录下建立logback.xml
+1… logback首先会试着查找logback.groovy文件;
+2… 当没有找到时，继续试着查找logback-test.xml文件;
+3… 当没有找到时，继续试着查找logback.xml文件;
+4… 如果仍然没有找到，则使用默认配置（打印到控制台）。
+
+总体来说，这个配置文件的目的是配置同步输出到控制台，异步输出到 info 和 error 级别的文件，
+并记录 MyBatis-Plus 的 SQL 执行日志。
+你可以根据具体需求灵活调整这些配置。
+-->
+<!--<configuration>：Logback 配置文件的根元素，包含了整个配置的开始和结束。-->
+<configuration>
+
+    <!--设置存储路径变量-->
+    <property name="LOG_HOME" value="./log"/>
+
+    <!-- 测试环境+开发环境. 多个使用逗号隔开. -->
+    <springProfile name="test,dev">
+        <root level="debug">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ASYNC_INFO_FILE"/>
+        </root>
+        <logger name="com.baomidou.mybatisplus" level="debug">
+            <appender-ref ref="CONSOLE"/>
+            <!--即使info.file里都是info级别日志，也能输出debug的sql-->
+            <appender-ref ref="ASYNC_INFO_FILE"/>
+        </logger>
+
+    </springProfile>
+    <!-- 生产环境. -->
+    <springProfile name="prod">
+        <root level="info">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ASYNC_INFO_FILE"/>
+        </root>
+        <logger name="com.baomidou.mybatisplus" level="info">
+            <appender-ref ref="CONSOLE"/>
+            <!--即使info.file里都是info级别日志，也能输出debug的sql-->
+            <appender-ref ref="ASYNC_INFO_FILE"/>
+        </logger>
+    </springProfile>
+
+
+    <!--
+    appender：定义一个 Appender，用于配置日志的输出方式。
+    name：指定 Appender 的名称，该名称在后续的 <appender-ref> 元素中被引用。
+    class：指定 Appender 实现的类。
+     -->
+    <!-- 日志同步输出到控制台 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!--
+        <encoder>：定义日志消息的格式。
+        pattern：定义日志输出的格式，其中 %d 表日期，%thread 表线程名，%-5level 表日志级别左对齐占用5个字符，
+        %logger{36} 表示 logger 名称最多占用 36 个字符，%msg%n 表示日志消息和换行符。
+        -->
+        <encoder>
+            <!-- pattern><![CDATA[%n[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] [Thread: %t] [ Class:%c >> Method: %M:%L ]%n%p:%m%n]]></pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) |%yellow(%thread) %blue([%logger>> Method:%M:%L]) - %cyan(%msg%n)</pattern>
+            <!-- <pattern><![CDATA[%n[%d{yyyy-MM-dd HH:mm:ss.SSS}] %highlight([%p]) %yellow([Thread: %t])  %blue([Class:%c >> Method: %M:%L]): %cyan(%msg%n)]]></pattern>-->
+        </encoder>
+        <!--设置编码-->
+        <charset>UTF-8</charset>
+    </appender>
+
+    <!-- info日志滚动文件输出定义 -->
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--<file>${LOG_HOME}/%d{yyyyMMdd}/info.log</file>-->
+        <!--
+        rollingPolicy：定义日志滚动策略，用于处理日志文件的滚动。 class：指定滚动策略的实现类。 fileNamePattern：定义日志文件的滚动命名模式
+        TimeBasedRollingPolicy:根据时间的滚动策略
+        如每天生产一个文件，最多保留30天
+        <fileNamePattern>${LOG_HOME}/%d{yyyyMMdd}.log.gz</fileNamePattern>
+        <maxHistory>30</maxHistory>
+
+        FixedWindowRollingPolicy：固定窗口的滚动策略，就是按个数
+        minIndex:窗口索引最小值
+        maxIndex:窗口索引最大值，当用户指定的窗口过大时，会自动将窗口设置为12。
+        fileNamePattern :必须包含“%i”
+        如
+        <fileNamePattern>${LOG_HOME}/%d{yyyyMMdd}/.%i.log.gz</fileNamePattern>
+        <minIndex>1</minIndex>
+        <maxIndex>10</maxIndex>
+
+        SizeAndTimeBasedRollingPolicy：先根据时间再根据文件大小来滚动生成文件,文件命名可以带.%i
+        如每个文件最多500MB,且保留30天，总文件最多20GB
+        <fileNamePattern>${LOG_HOME}/%d{yyyyMMdd}/%d{yyyyMMdd}.%i.log.gz</fileNamePattern>  日期文件夹里带时间
+        <fileNamePattern>${LOG_HOME}/%d{yyyyMMdd}.%i.log.gz</fileNamePattern>    日志根目录，部分日期文件夹带时间
+        <maxFileSize>5MB</maxFileSize>
+        <maxHistory>60</maxHistory>
+        <totalSizeCap>20GB</totalSizeCap>
+        -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--    <fileNamePattern>${LOG_HOME}/%d{yyyyMMdd}/${app.name}_%d{yyyyMMdd}_%i.log.gz</fileNamePattern>-->
+            <fileNamePattern>${LOG_HOME}/%d{yyyyMMdd}/info.log</fileNamePattern>
+                <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!-- <pattern><![CDATA[%n[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] [Thread: %t] [ Class:%c >> Method: %M:%L ]: %msg%n]]></pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) |%yellow(%thread) %blue([%logger>> Method:%M:%L]) - %cyan(%msg%n)</pattern>
+        </encoder>
+        <charset>UTF-8</charset>
+        <!-- 设置只接受 INFO 级别及以上的日志 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+    <!-- info日志同步输出到控制台 -->
+    <appender name="ASYNC_INFO_FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <!-- <discardingThreshold>0</discardingThreshold>-->
+        <!--添加附加的appender,最多只能添加一个-->
+        <!--<appender-ref ref="INFO-LOG"/>-->
+        <!-- 设置输出缓冲区的大小，提高性能 -->
+        <queueSize>512</queueSize>
+        <!--
+        选择 <queueSize> 的合适值时需要平衡两个因素：
+        内存消耗： 较大的缓冲区可以容纳更多的未处理日志事件，但也会占用更多的内存。
+        如果你的应用程序同时产生大量的日志事件，你可能需要增加缓冲区的大小以防止事件丢失，但请注意这可能导致更多的内存使用。
+        性能： 较小的缓冲区可能会更迅速地将日志事件传递给异步 Appender，减少了在队列中等待处理的时间。
+        然而，如果缓冲区太小，可能导致异步 Appender 无法及时处理所有的日志事件，从而丢失一些事件。
+        通常来说，对于一个普通的应用程序，<queueSize> 的值可以在几十到几百之间。
+        你可以通过尝试不同的值，并通过监视应用程序的内存使用和性能来确定最合适的设置。
+        -->
+        <appender-ref ref="INFO_FILE"/>
+    </appender>
+
+        <!-- error日志滚动文件输出定义  根路径的时间+数量策略-->
+        <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<file>${LOG_HOME}/error.log</file>-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_HOME}/error_%d{yyyyMMdd}_%i.log.gz</fileNamePattern>
+                <maxFileSize>500MB</maxFileSize>
+                <maxHistory>40</maxHistory>
+                <totalSizeCap>20GB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) |%yellow(%thread) %blue([%logger>> Method:%M:%L]) - %cyan(%msg%n)</pattern>
+            </encoder>
+            <charset>UTF-8</charset>
+        </appender>
+
+        <!-- error日志异步输出到error.file -->
+        <appender name="ASYNC_ERROR_FILE" class="ch.qos.logback.classic.AsyncAppender">
+            <appender-ref ref="ERROR_FILE"/>
+        </appender>
+
+        <!--
+       logger：定义一个 Logger，用于配置日志记录器。
+       name：指定 Logger 的名称，通常是包名或类名。例如，com.example 表示要记录该包下的错误日志，
+       level：指定 Logger 的日志级别。
+       additivity：指定是否继承父 Logger 的 Appender，默认为 true。设置为 false 表示不继承。
+       上级父是指name指定的路径的子父关系，如com 与com.xiehui
+       一旦继承，会继承上级的日志级别，同时会把自己的日志传递给上级，可能会再打印一次，也就是打印了两次，一般都是false-->
+        <!--配置appender是error输出  出日志级别 -->
+        <logger name="com.xiehui" level="error"  additivity="false">
+            <appender-ref ref="ASYNC_ERROR_FILE"/>
+        </logger>
+
+
+    <!--
+    logger用于配置特定包或类的日志记录器。
+    root用于配置根日志记录器，它是所有日志记录器的顶级父级。
+    生效规则：
+    如果存在与某个日志事件名称匹配的 <logger> 配置，那么将使用该 <logger> 配置。
+    如果没有匹配的 <logger> 配置，则使用 <root> 配置。
+    简而言之，如果针对特定的包或类配置了 <logger>，则使用该 <logger> 的配置。否则，将使用 <root> 的配置作为默认配置。-->
+
+    <logger name="com.xiehui" level="debug"  additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!--
+    root：定义根 Logger，它是所有 Logger 的祖先。
+    在这里，根 Logger 配置了输出级别为 info，并引用了 CONSOLE 和 ASYNC_INFO_FILE 两个 Appender。
+    -->
+    <!--
+    配置appender是 控制台输出和info日志输出 日志级别
+    通常用于设置默认的日志级别和输出方式，但它并不会影响其他 Logger 的配置
+    -->
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ASYNC_INFO_FILE"/>
+    </root>
+
+
+
+    <!--
+     sql日志使用ASYNC_INFO_FILE，异步输出到info.file，同步输出到控制台，
+     name 属性：com.baomidou.mybatisplus 表示要记录 MyBatis-Plus 的 SQL 执行日志。
+     此处配置的logger，独立与root,不受root的日志级别限制，
+     可理解为，在root的控制下，更精确地控制 MyBatis-Plus SQL 日志的级别而不影响其他 Logger
+     -->
+    <logger name="com.baomidou.mybatisplus" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <!--即使info.file里都是info级别日志，也能输出debug的sql-->
+        <appender-ref ref="ASYNC_INFO_FILE"/>
+    </logger>
+
+
+</configuration>
